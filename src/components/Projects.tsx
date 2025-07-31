@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Globe } from "lucide-react"
+import { ExternalLink, Github } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -112,17 +112,6 @@ export default function Projects() {
             <div className="grid gap-8 md:grid-cols-2">
               {filteredProjects.filter(project => project.featured).map((project, index) => (
                 <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
-                  <div className="aspect-video bg-muted relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <div className="text-center text-muted-foreground">
-                        <div className="text-6xl font-bold text-primary/30 mb-2">
-                          {project.title.split(' ').map(word => word[0]).join('')}
-                        </div>
-                        <p className="text-sm">Podgląd projektu</p>
-                      </div>
-                    </div>
-                  </div>
-                  
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
