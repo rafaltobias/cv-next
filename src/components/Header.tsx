@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Menu, Github, Mail } from "lucide-react"
+import { Menu, Github, Mail, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -21,6 +21,17 @@ const navigation = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [emailCopied, setEmailCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("rafaladamczyk333@gmail.com")
+      setEmailCopied(true)
+      setTimeout(() => setEmailCopied(false), 2000)
+    } catch {
+      console.log("Failed to copy email")
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -59,11 +70,9 @@ export default function Header() {
               </Link>
             </Button>
             
-            <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
-              <Link href="mailto:rafaladamczyk333@gmail.com">
-                <Mail className="h-4 w-4" />
-                <span className="sr-only">Email</span>
-              </Link>
+            <Button variant="ghost" size="icon" onClick={copyEmail} className="hidden sm:inline-flex">
+              {emailCopied ? <Check className="h-4 w-4" /> : <Mail className="h-4 w-4" />}
+              <span className="sr-only">{emailCopied ? "Email skopiowany" : "Kopiuj email"}</span>
             </Button>
 
             {/* Mobile Menu */}
@@ -105,11 +114,9 @@ export default function Header() {
                       </Link>
                     </Button>
                     
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href="mailto:rafaladamczyk333@gmail.com">
-                        <Mail className="h-4 w-4" />
-                        <span className="sr-only">Email</span>
-                      </Link>
+                    <Button variant="ghost" size="icon" onClick={copyEmail}>
+                      {emailCopied ? <Check className="h-4 w-4" /> : <Mail className="h-4 w-4" />}
+                      <span className="sr-only">{emailCopied ? "Email skopiowany" : "Kopiuj email"}</span>
                     </Button>
                   </div>
                 </div>

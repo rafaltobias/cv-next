@@ -79,27 +79,28 @@ export default function Projects() {
     : projects.filter(project => project.category === selectedCategory)
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section id="projects" className="py-20 bg-muted/30 overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Moje <span className="text-primary">Projekty</span>
+              Moje <span className="text-primary gradient-text">Projekty</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-primary mx-auto mb-6 animate-scale-in delay-200"></div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-300">
               Wybrane projekty, które najlepiej pokazują moje umiejętności i doświadczenie
             </p>
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+          <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up delay-400">
+            {categories.map((category, index) => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className="transition-all"
+                className="transition-all hover-lift"
+                style={{animationDelay: `${0.5 + index * 0.1}s`}}
               >
                 {category}
               </Button>
@@ -109,7 +110,7 @@ export default function Projects() {
           {/* Projects Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project, index) => (
-              <Card key={project.id} className="group hover:shadow-md transition-shadow">
+              <Card key={project.id} className="group hover:shadow-md transition-shadow hover-lift animate-fade-in-up" style={{animationDelay: `${0.8 + index * 0.1}s`}}>
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
                     <CardTitle className="text-lg">{project.title}</CardTitle>
@@ -147,13 +148,13 @@ export default function Projects() {
                     </div>
                     
                     <div className="flex gap-2">
-                      <Button variant="ghost" size="sm" asChild className="h-8 px-2">
+                      <Button variant="ghost" size="sm" asChild className="h-8 px-2 hover-scale">
                         <Link href={project.github} target="_blank">
                           <Github className="w-3 h-3" />
                         </Link>
                       </Button>
                       {project.demo && (
-                        <Button variant="ghost" size="sm" asChild className="h-8 px-2">
+                        <Button variant="ghost" size="sm" asChild className="h-8 px-2 hover-scale">
                           <Link href={project.demo} target="_blank">
                             <ExternalLink className="w-3 h-3" />
                           </Link>

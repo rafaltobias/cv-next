@@ -26,23 +26,23 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-20 bg-muted/30 overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              O <span className="text-primary">Mnie</span>
+              O <span className="text-primary gradient-text">Mnie</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-primary mx-auto mb-6 animate-scale-in delay-200"></div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-300">
               Poznaj mnie lepiej - moje doświadczenie, pasje i to, co mnie motywuje w świecie technologii.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* Left Column - Bio */}
-            <div className="space-y-6">
-              <Card>
+            <div className="space-y-6 animate-fade-in-left delay-400">
+              <Card className="hover-lift hover-glow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Code className="w-5 h-5 text-primary" />
@@ -66,7 +66,7 @@ export default function About() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="hover-lift hover-glow">
                 <CardHeader>
                   <CardTitle>Zainteresowania</CardTitle>
                   <CardDescription>
@@ -86,8 +86,8 @@ export default function About() {
             </div>
 
             {/* Right Column - Experience */}
-            <div className="space-y-6">
-              <Card>
+            <div className="space-y-6 animate-fade-in-right delay-500">
+              <Card className="hover-lift hover-glow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Briefcase className="w-5 h-5 text-primary" />
@@ -99,10 +99,10 @@ export default function About() {
                     {experiences.map((exp, index) => {
                       const Icon = exp.icon
                       return (
-                        <div key={index} className="relative">
+                        <div key={index} className="relative animate-fade-in-up" style={{animationDelay: `${0.6 + index * 0.1}s`}}>
                           <div className="flex items-start gap-4">
                             <div className="flex-shrink-0">
-                              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover-scale">
                                 <Icon className="w-5 h-5 text-primary" />
                               </div>
                             </div>

@@ -53,36 +53,36 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section id="skills" className="py-20 bg-background overflow-hidden">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Moje <span className="text-primary">Umiejętności</span>
+              Moje <span className="text-primary gradient-text">Umiejętności</span>
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-primary mx-auto mb-6 animate-scale-in delay-200"></div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-300">
               Zestaw technologii i narzędzi, z którymi pracuję na co dzień.
             </p>
           </div>
 
           {/* Main Skills Grid */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
-            {skillCategories.map((category) => {
+            {skillCategories.map((category, index) => {
               const Icon = category.icon
               return (
-                <Card key={category.title} className="h-full">
+                <Card key={category.title} className="h-full hover-lift hover-glow animate-fade-in-up" style={{animationDelay: `${0.4 + index * 0.2}s`}}>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Icon className="w-5 h-5 text-primary" />
+                      <Icon className="w-5 h-5 text-primary hover-scale" />
                       {category.title}
                     </CardTitle>
                     <CardDescription>{category.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {category.skills.map((skill) => (
-                        <div key={skill.name} className="space-y-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <div key={skill.name} className="space-y-2 animate-fade-in-right" style={{animationDelay: `${0.6 + index * 0.2 + skillIndex * 0.1}s`}}>
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-foreground">
                               {skill.name}

@@ -2,11 +2,23 @@
 
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-import { Github, Mail, Heart, ArrowUp } from "lucide-react"
+import { Github, Mail, Heart, ArrowUp, Check } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const [emailCopied, setEmailCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("rafaladamczyk333@gmail.com")
+      setEmailCopied(true)
+      setTimeout(() => setEmailCopied(false), 2000)
+    } catch {
+      console.log("Failed to copy email")
+    }
+  }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -49,6 +61,23 @@ export default function Footer() {
               <div className="flex gap-2">
                 {socialLinks.map((link) => {
                   const Icon = link.icon
+                  const isEmail = link.label === "Email"
+                  
+                  if (isEmail) {
+                    return (
+                      <Button
+                        key={link.label}
+                        variant="ghost"
+                        size="icon"
+                        onClick={copyEmail}
+                        className="hover:bg-primary/10 hover:text-primary"
+                      >
+                        {emailCopied ? <Check className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
+                        <span className="sr-only">{emailCopied ? "Email skopiowany" : "Kopiuj email"}</span>
+                      </Button>
+                    )
+                  }
+                  
                   return (
                     <Button
                       key={link.label}
@@ -88,12 +117,12 @@ export default function Footer() {
               <h4 className="text-lg font-semibold">Kontakt</h4>
               <div className="text-sm text-muted-foreground space-y-1">
                 <p>Wrocław, Polska</p>
-                <Link 
-                  href="mailto:rafaladamczyk333@gmail.com"
-                  className="block hover:text-foreground transition-colors"
+                <button 
+                  onClick={copyEmail}
+                  className="block hover:text-foreground transition-colors text-left"
                 >
-                  rafaladamczyk333@gmail.com
-                </Link>
+                  {emailCopied ? "Skopiowano!" : "rafaladamczyk333@gmail.com"}
+                </button>
                 <p>Dostępny dla nowych projektów</p>
               </div>
             </div>
@@ -102,11 +131,6 @@ export default function Footer() {
           <Separator className="my-8" />
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <span>&copy; {currentYear} Rafał Adamczyk. Zbudowane z</span>
-              <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>używając Next.js i shadcn/ui</span>
-            </div>
 
             <Button
               variant="ghost"
