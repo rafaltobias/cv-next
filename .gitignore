@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/tests/coverage/
+*.test.js.snap
+/jest-report/
 
 # next.js
 /.next/
@@ -19,19 +22,31 @@
 
 # production
 /build
+/dist/
 
 # misc
 .DS_Store
 *.pem
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+debug.log
 
 # env files (can opt-in for committing if needed)
 .env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example
 
 # vercel
 .vercel
@@ -39,3 +54,129 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# logs
+logs
+*.log
+lerna-debug.log*
+.npm
+
+# runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# nyc test coverage
+.nyc_output
+
+# dependency directories
+jspm_packages/
+
+# optional npm cache directory
+.npm
+
+# eslint cache
+.eslintcache
+
+# stylelint cache
+.stylelintcache
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# storybook build outputs
+.out
+.storybook-out
+
+# rollup.js default build output
+/dist/
+
+# temporary folders
+tmp/
+temp/
+
+# editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Security files
+*.key
+*.pem
+*.p12
+*.p8
+*.cer
+*.crt
+*.der
+*.pfx
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Archive files (optional)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Personal/sensitive files
+personal/
+private/
+secrets/
+credentials/
+config/local.*
+.secrets
+.credentials
+
+# GitHub specific
+.github/copilot-instructions.md
+.vscode/tasks.json

@@ -1,33 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Rafała Adamczyka
 
-## Getting Started
+Nowoczesne portfolio zbudowane w Next.js 14 z wykorzystaniem shadcn/ui i Tailwind CSS.
 
-First, run the development server:
+## 🚀 Funkcje
+
+- **Responsywny design** - działa na wszystkich urządzeniach
+- **Nowoczesne komponenty** - zbudowane z shadcn/ui
+- **Optymalizacja wydajności** - szybkie ładowanie i płynne animacje
+- **Sekcje portfolio:**
+  - Hero z informacjami kontaktowymi
+  - O mnie - historia i doświadczenie
+  - Umiejętności - technologie i narzędzia
+  - Projekty - portfolio prac
+  - Kontakt - informacje kontaktowe
+
+## 🛠️ Technologie
+
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS
+- **Komponenty:** shadcn/ui
+- **Język:** TypeScript
+- **Icons:** Lucide React
+- **Font:** Inter (Google Fonts)
+
+## 🚀 Uruchomienie
+
+Sklonuj repozytorium i zainstaluj zależności:
+
+```bash
+git clone <repository-url>
+cd cv-next
+npm install
+```
+
+Uruchom serwer deweloperski:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Otwórz [http://localhost:3000](http://localhost:3000) w przeglądarce.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Struktura Projektu
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx      # Layout aplikacji
+│   ├── page.tsx        # Strona główna
+│   └── globals.css     # Style globalne
+├── components/
+│   ├── ui/             # Komponenty shadcn/ui
+│   ├── Header.tsx      # Nawigacja
+│   ├── Hero.tsx        # Sekcja powitalna
+│   ├── About.tsx       # O mnie
+│   ├── Skills.tsx      # Umiejętności
+│   ├── Projects.tsx    # Projekty
+│   ├── Contact.tsx     # Kontakt
+│   └── Footer.tsx      # Stopka
+└── lib/
+    └── utils.ts        # Utilities
+```
 
-## Learn More
+## 🎨 Dostosowywanie
 
-To learn more about Next.js, take a look at the following resources:
+### Zmiana treści
+Edytuj poszczególne komponenty w katalogu `src/components/` aby zmienić treść portfolio.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Zmiana stylów
+Kolory i style można dostosować w:
+- `src/app/globals.css` - zmienne CSS
+- `tailwind.config.js` - konfiguracja Tailwind
+- `components.json` - konfiguracja shadcn/ui
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dodawanie nowych sekcji
+1. Utwórz nowy komponent w `src/components/`
+2. Zaimportuj go w `src/app/page.tsx`
+3. Dodaj link w nawigacji (`src/components/Header.tsx`)
+
+## 📦 Build i Deploy
+
+Zbuduj aplikację dla produkcji:
+
+```bash
+npm run build
+```
+
+Uruchom wersję produkcyjną lokalnie:
+
+```bash
+npm run start
+```
+
+## 📱 Responsive Design
+
+Portfolio jest w pełni responsywne i optymalizowane dla:
+- Mobile (< 768px)
+- Tablet (768px - 1024px)  
+- Desktop (> 1024px)
+
+## 🔧 Konfiguracja
+
+### Metadata SEO
+Edytuj `src/app/layout.tsx` aby zmienić:
+- Tytuł strony
+- Opis meta
+- Słowa kluczowe
+- Open Graph tags
+
+### Kolory motywu
+Zmień kolory w `src/app/globals.css`:
+```css
+:root {
+  --primary: your-color;
+  --secondary: your-color;
+  /* ... */}
+```
+
+## 📄 Licencja
+
+Ten projekt jest open source i dostępny na licencji MIT.
+
+## 📞 Kontakt
+
+- **Email:** rafaladamczyk333@gmail.com
+- **GitHub:** [rafaltobias](https://github.com/rafaltobias)
+- **Lokalizacja:** Wrocław, Polska
 
 ## Deploy on Vercel
 
