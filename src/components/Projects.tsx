@@ -106,126 +106,64 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Featured Projects */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold mb-6">Wyróżnione Projekty</h3>
-            <div className="grid gap-8 md:grid-cols-2">
-              {filteredProjects.filter(project => project.featured).map((project, index) => (
-                <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <CardTitle className="mb-2">{project.title}</CardTitle>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="secondary">{project.category}</Badge>
-                          <Badge variant={project.status === "Ukończony" ? "default" : "outline"}>
-                            {project.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                    <CardDescription className="text-sm">
-                      {project.longDescription}
-                    </CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="text-sm font-medium mb-2">Technologie:</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.map((tech) => (
-                            <Badge key={tech} variant="outline" className="text-xs">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" asChild>
-                          <Link href={project.github} target="_blank">
-                            <Github className="w-4 h-4 mr-2" />
-                            Kod
-                          </Link>
-                        </Button>
-                        {project.demo && (
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={project.demo} target="_blank">
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Demo
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* All Projects */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-6">Wszystkie Projekty</h3>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredProjects.map((project, index) => (
-                <Card key={project.id} className="group hover:shadow-md transition-shadow">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-lg">{project.title}</CardTitle>
-                      <div className="flex flex-col gap-1">
-                        <Badge variant={project.status === "Ukończony" ? "default" : "outline"} className="text-xs">
-                          {project.status}
+          {/* Projects Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project, index) => (
+              <Card key={project.id} className="group hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <CardTitle className="text-lg">{project.title}</CardTitle>
+                    <div className="flex flex-col gap-1">
+                      <Badge variant={project.status === "Ukończony" ? "default" : "outline"} className="text-xs">
+                        {project.status}
+                      </Badge>
+                      {project.featured && (
+                        <Badge variant="secondary" className="text-xs">
+                          Featured
                         </Badge>
-                        {project.featured && (
+                      )}
+                    </div>
+                  </div>
+                  <CardDescription className="text-sm line-clamp-3">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent className="pt-0">
+                  <div className="space-y-3">
+                    <div>
+                      <div className="flex flex-wrap gap-1">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <Badge key={tech} variant="secondary" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 3 && (
                           <Badge variant="secondary" className="text-xs">
-                            Featured
+                            +{project.technologies.length - 3}
                           </Badge>
                         )}
                       </div>
                     </div>
-                    <CardDescription className="text-sm line-clamp-3">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-0">
-                    <div className="space-y-3">
-                      <div>
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.slice(0, 3).map((tech) => (
-                            <Badge key={tech} variant="secondary" className="text-xs">
-                              {tech}
-                            </Badge>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <Badge variant="secondary" className="text-xs">
-                              +{project.technologies.length - 3}
-                            </Badge>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-2">
+                    
+                    <div className="flex gap-2">
+                      <Button variant="ghost" size="sm" asChild className="h-8 px-2">
+                        <Link href={project.github} target="_blank">
+                          <Github className="w-3 h-3" />
+                        </Link>
+                      </Button>
+                      {project.demo && (
                         <Button variant="ghost" size="sm" asChild className="h-8 px-2">
-                          <Link href={project.github} target="_blank">
-                            <Github className="w-3 h-3" />
+                          <Link href={project.demo} target="_blank">
+                            <ExternalLink className="w-3 h-3" />
                           </Link>
                         </Button>
-                        {project.demo && (
-                          <Button variant="ghost" size="sm" asChild className="h-8 px-2">
-                            <Link href={project.demo} target="_blank">
-                              <ExternalLink className="w-3 h-3" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
+                      )}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* Call to Action */}
