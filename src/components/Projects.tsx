@@ -19,7 +19,7 @@ export default function Projects() {
       status: 'Ukończony',
       github: 'https://github.com/rafaltobias',
       demo: null,
-      featured: true
+      featured: false
     },
     {
       id: 2,
