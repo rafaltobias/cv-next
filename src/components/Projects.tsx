@@ -173,7 +173,7 @@ export default function Projects() {
               <CardContent className="p-8">
                 <h3 className="text-xl font-semibold mb-2">Chcesz zobaczyć więcej?</h3>
                 <p className="text-muted-foreground mb-4">
-                  Wszystkie moje projekty są dostępne na GitHub. Zapraszam do przejrzenia kodu i współpracy!
+                  Wszystkie moje projekty są dostępne na GitHub.
                 </p>
                 <Button asChild>
                   <Link href="https://github.com/rafaltobias" target="_blank">
